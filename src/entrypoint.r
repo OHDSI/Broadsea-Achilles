@@ -115,10 +115,12 @@ if (length(args) == 0 || args[1] != "heel") {
 }
 
 # Export Achilles results to output path in JSON format.
-exportToJson(
-  connectionDetails,
-  cdmDatabaseSchema = env_vars$ACHILLES_CDM_SCHEMA,
-  resultsDatabaseSchema = env_vars$ACHILLES_RES_SCHEMA,
-  vocabDatabaseSchema = env_vars$ACHILLES_VOCAB_SCHEMA,
-  outputPath = output_path
-)
+if(!grepl("ignore", output_path)){
+  exportToJson(
+    connectionDetails,
+    cdmDatabaseSchema = env_vars$ACHILLES_CDM_SCHEMA,
+    resultsDatabaseSchema = env_vars$ACHILLES_RES_SCHEMA,
+    vocabDatabaseSchema = env_vars$ACHILLES_VOCAB_SCHEMA,
+    outputPath = output_path
+  )
+}
